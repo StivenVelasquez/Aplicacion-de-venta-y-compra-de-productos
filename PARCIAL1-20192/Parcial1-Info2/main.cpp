@@ -14,7 +14,7 @@ int main()
 {
     //Se instancian las clases
     Empleado Empleado1;
-   // Cliente Cliente1;
+    Cliente Cliente1;
 
     int n;
 
@@ -227,12 +227,9 @@ int main()
                           lalista.pop_front(); //Elimina el primer elemento
                         }
 
-                        system("PAUSE");
-                        return EXIT_SUCCESS;
-
              //----------------------------------------------------------------------------------------------
 
-
+                    Cliente1.ComprarCombo();  //Funcion para comprar los combos
 
 
                     } //case 1

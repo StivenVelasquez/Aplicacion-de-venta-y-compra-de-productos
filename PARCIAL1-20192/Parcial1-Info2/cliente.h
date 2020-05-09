@@ -1,6 +1,8 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
 #include <iostream>
+#include <fstream>
+#include <list>
 
 using namespace  std;
 
@@ -16,7 +18,7 @@ public:
     void setcedula(string value);
     string getNombreCliente() const;
     string getCedula() const;
-    void ComprarCombo();
+    int ComprarCombo();
 
 };
 #endif // CLIENTE_H

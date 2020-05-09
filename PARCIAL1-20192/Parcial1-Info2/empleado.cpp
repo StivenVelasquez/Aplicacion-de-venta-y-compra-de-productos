@@ -1,6 +1,7 @@
 #include "empleado.h"
 #include <iomanip>
 #include <vector>
+#include <string>
 
 //Clase empleado
 
@@ -153,6 +154,8 @@ int Empleado::CrearCombos()
    string line;
    string producto;
    string perro, hamburguesa, gaseosa, nachos;
+   ofstream escritura;
+   ifstream consulta;
 
    cout<<"===================PRODUCTOS DISPONIBLES==============="<<endl;
    cout<<endl;
@@ -178,14 +181,9 @@ int Empleado::CrearCombos()
 
    int n=0;
    string NombreCombo, IDCombo;
+   int PrecioCombo;
 
    cout<<"-------------------------------------------------------"<<endl;
-
-   cout<<"INGRESE EL NOMBRE QUE DESEA DARLE AL COMBO "<<endl;
-   cin>>NombreCombo;
-
-   cout<<"-------------------------------------------------------"<<endl;
-   cout<<endl;
 
    cout<<"INGRESE EL ID DEL COMBO QUE DESEA CREAR: "<<endl;
    cin>>IDCombo;
@@ -193,27 +191,66 @@ int Empleado::CrearCombos()
    cout<<"-------------------------------------------------------"<<endl;
    cout<<endl;
 
+   consulta.open("Combos.txt",ios::in);
 
+   string linea;
+   int cont=0;
+   string ID="ID: ",IDC;
 
+   if(consulta.is_open()){
 
-   ofstream escritura;
-   escritura.open("Combos.txt",ios::out|ios::app);
+       consulta>>ID>>IDC;
 
-   if(escritura.is_open()){
-      escritura<<endl;
-      escritura<<"ID: "<<IDCombo<<endl;
-      escritura<<"COMBO "<<NombreCombo<<endl;
-      escritura<<"-----------------"<<endl;
-      escritura<<endl;
+       while(!consulta.eof()){
+
+           if(IDCombo==IDC){
+               cout<<"|-------------------------------------------------------|"<<endl;
+               cout<<"|----------Ya Existe este combo que desea crear---------|"<<endl;
+               cout<<"|-------------------------------------------------------|"<<endl;
+               cout<<endl;
+               return 0;
+   }
+       }
    }
 
-   escritura.close();
+                   escritura.open("Combos.txt",ios::out|ios::app);
+
+                   if(escritura.is_open()){
+
+
+                   cout<<"INGRESE EL NOMBRE QUE DESEA DARLE AL COMBO "<<endl;
+                   cin>>NombreCombo;
+
+                   cout<<"-------------------------------------------------------"<<endl;
+                   cout<<endl;
+
+                   cout<<"INGRESE EL VALOR DEL COMBO: "<<endl;
+                   cin>>PrecioCombo;
+
+                   cout<<"-------------------------------------------------------"<<endl;
+                   cout<<endl;
+
+                   escritura.open("Combos.txt",ios::out|ios::app);
+
+                   if(escritura.is_open()){
+                      escritura<<endl;
+                      escritura<<"ID: "<<IDCombo<<endl;
+                      escritura<<"COMBO "<<NombreCombo<<endl;
+                      escritura<<"PRECIO: "<<PrecioCombo<<"$"<<endl;
+                      escritura<<"-----------------"<<endl;
+                      escritura<<endl;
+                   }
+
+                   escritura.close();
+               }
+
 
 do{
 
    cout<<"|-------------------------------------------------------|\n";
    cout<<"|----------------MENU PARA CREAR COMBOS-----------------|\n";
    cout<<"|-------------------------------------------------------|\n";
+   cout<<"|Nota-Para finalizar la creacion de un combo  ingrese 5-|\n";
    cout<<"|-------------------------------------------------------|\n";
    cout<<"|1.PERRO------------------------------------------------|\n";
    cout<<"|2.HAMBURGUESA------------------------------------------|\n";
@@ -327,6 +364,7 @@ do{
        if(escritura.is_open()){
            escritura<<endl;
            escritura<<"-----------------"<<endl;
+           escritura<<"*"<<endl;
            escritura<<endl;
        }
        escritura.close();
