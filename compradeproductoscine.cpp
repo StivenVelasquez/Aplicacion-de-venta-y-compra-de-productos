@@ -1,6 +1,7 @@
 #include "compradeproductoscine.h"
 #include "producto.h"
 #include <iomanip>
+#include <vector>
 
 /*Cliente::Cliente()
 {
@@ -92,7 +93,7 @@ void Empleado::registrar()
 {
 
     //Declaracion de variables
-    ofstream aux;
+    ofstream aux,aux2;
     ifstream lectura;
     bool encontrado=false;
     string auxID,ID,Producto;
@@ -105,8 +106,9 @@ void Empleado::registrar()
     //Se abren los ficheros a utilizar
     aux.open("auxiliar.txt",ios::out);
     lectura.open("ListaProductos.txt",ios::in);
+    aux2.open("ListaProductos2.txt",ios::out);
 
-    if(aux.is_open() && lectura.is_open()){
+    if(aux.is_open() && lectura.is_open()&& aux2.is_open()){
 
         cout<<endl;
         cout<<"--------------------------------------------------------";
@@ -129,6 +131,8 @@ void Empleado::registrar()
                     cout<<endl;
 
                     aux<<left<<setw(10)<<ID<<setw(10)<<Producto<<setw(13)<<setprecision(2)<<right<<Cantidad<<setw(7)<<CostoProducto<<setw(7)<<setprecision(2)<<right<<CostoProducto<<endl;
+
+                    aux2<<left<<setw(10)<<Producto<<setw(13)<<setprecision(2)<<right<<Cantidad<<endl;
 
                     break;
 
@@ -154,6 +158,7 @@ void Empleado::registrar()
 
                 //Para imprimir de manera organizada en el fichero
                aux<<left<<setw(10)<<ID<<setw(10)<<Producto<<setw(13)<<setprecision(2)<<right<<CantidadModificada<<setw(7)<<CostoProducto<<setw(7)<<setprecision(2)<<right<<CostoTotalModificado<<endl;
+               aux2<<left<<setw(10)<<Producto<<setw(13)<<setprecision(2)<<right<<Cantidad<<endl;
 
                 cout<<"|-------------------------------------------------------|"<<endl;
                 cout<<"|-----------------REGISTRO MODIFICADO-------------------|"<<endl;
@@ -170,7 +175,7 @@ void Empleado::registrar()
             else
                //Imprimir de manera orgnizada en el fichero
                 aux<<left<<setw(10)<<ID<<setw(10)<<Producto<<setw(13)<<setprecision(2)<<right<<Cantidad<<setw(7)<<CostoProducto<<setw(7)<<setprecision(2)<<right<<CostoTotal<<endl;
-
+                aux2<<left<<setw(10)<<Producto<<setw(13)<<setprecision(2)<<right<<Cantidad<<endl;
 
 
      lectura>>ID;
@@ -194,24 +199,185 @@ void Empleado::registrar()
    //Cerrando los archivos
    aux.close();
    lectura.close();
+   aux2.close();
    remove("ListaProductos.txt"); //Se borra el fichero
    rename("auxiliar.txt","ListaProductos.txt"); //Se renombran los ficheros
 
 
 }//Fin funcion Registrar
 
-void Empleado::CrearCombos()
+int Empleado::CrearCombos()
 {
+   //Aca se leen los productos disponibles en el fichero y se pasan a un vector para luego imprimirlos en pantalla;
+   vector<string>list;
+   string line;
+   string producto;
+   string perro, hamburguesa, gaseosa, nachos;
+
+   cout<<"===================PRODUCTOS DISPONIBLES==============="<<endl;
+   cout<<endl;
+   cout<<left<<setw(10)<<"PRODUCTO"<<setw(13)<<setprecision(2)<<setw(13)<<right<<"                    CANTIDAD"<<endl;
+   cout<<endl;
+
+   ifstream lectura("ListaProductos2.txt"); //Apertura del archivo en modo lectura
+   if(lectura.is_open()){
+       while (getline(lectura, producto)){
+           list.push_back(producto);
+           cout << producto << endl;
+       }
+   }
+   lectura.close();
+   //Comprobacion
+   for (int i = 0; i < list.size()-6; i++){
+       cout << list[i];
+       cout << endl;
+   }
+   cout<<endl;
+
+   int n=0;
+   string NombreCombo;
+
+   cout<<"-------------------------------------------------------"<<endl;
+
+   cout<<"INGRESE EL NOMBRE QUE DESEA DARLE AL COMBO"<<endl;
+   cin>>NombreCombo;
+
+   cout<<"-------------------------------------------------------"<<endl;
+   cout<<endl;
+
+   ofstream escritura;
+   escritura.open("Combos.txt",ios::out|ios::app);
+
+   if(escritura.is_open()){
+      escritura<<endl;
+      escritura<<"COMBO "<<NombreCombo<<endl;
+      escritura<<"-----------------"<<endl;
+      escritura<<endl;
+   }
+
+   escritura.close();
+
+do{
+
+   cout<<"|-------------------------------------------------------|\n";
+   cout<<"|----------------MENU PARA CREAR COMBOS-----------------|\n";
+   cout<<"|-------------------------------------------------------|\n";
+   cout<<"|-------------------------------------------------------|\n";
+   cout<<"|1.PERRO------------------------------------------------|\n";
+   cout<<"|2.HAMBURGUESA------------------------------------------|\n";
+   cout<<"|3.GASEOSA----------------------------------------------|\n";
+   cout<<"|4.PAQUETES DE NACHOS-----------------------------------|\n";
+   cout<<"|5.FINALIZAR CREACION DE COMBO--------------------------|\n";
+   cout<<"|-------------------------------------------------------|\n";
+
+   cout<<endl;
+   cout<<"------------------------------------------------------"<<endl;
+   cout<<"CON CUALES INGREDIENTES DESEA ARMAR EL COMBO?"<<endl;
+   cout<<endl;
+   cout<<"------------------------------------------------------"<<endl;
+   cout<<"INGRESE UNA OPCION: ";
+   cin>>n;
+   cout<<"------------------------------------------------------"<<endl;
+   cout<<endl;
+
+   switch (n) {
+
+       case 1:
+       {
+           int Cant_Perros;
+           escritura.open("Combos.txt",ios::out|ios::app);
+           if(escritura.is_open()){
+               cout<<"INGRESE LA CANTIDAD DE PERROS: "<<endl;
+               cin>>Cant_Perros;
+               escritura<<Cant_Perros<<" PERROS"<<endl;
+               cout<<"------------------------------------------------------"<<endl;
+               cout<<endl;
+           }
+        escritura.close();
+       }
+       break;
+
+       case 2:
+       {
+           int Cant_Hamburguesas;
+           escritura.open("Combos.txt",ios::out|ios::app);
+           if(escritura.is_open()){
+               cout<<"INGRESE LA CANTIDAD DE HAMBURGUESAS: "<<endl;
+               cin>>Cant_Hamburguesas;
+               escritura<<Cant_Hamburguesas<<" HAMBURGUESAS"<<endl;
+               cout<<"------------------------------------------------------"<<endl;
+               cout<<endl;
+
+           }
+       escritura.close();
+       }
+       break;
+
+       case 3:
+       {
+           int Cant_Gaseosas;
+           escritura.open("Combos.txt",ios::out|ios::app);
+           if(escritura.is_open()){
+               cout<<"INGRESE LA CANTIDAD DE GASEOSAS: "<<endl;
+               cin>>Cant_Gaseosas;
+               escritura<<Cant_Gaseosas<<" GASEOSAS"<<endl;
+               cout<<"------------------------------------------------------"<<endl;
+               cout<<endl;
+
+           }
+       escritura.close();
+       }
+       break;
+
+       case 4:
+       {
+           int Cant_PaquetesNachos;
+           escritura.open("Combos.txt",ios::out|ios::app);
+           if(escritura.is_open()){
+               cout<<"INGRESE LA CANTIDAD DE PAQUETES DE NACHOS: "<<endl;
+               cin>>Cant_PaquetesNachos;
+               escritura<<Cant_PaquetesNachos<<" PAQUETES DE NACHOS"<<endl;
+               cout<<"------------------------------------------------------"<<endl;
+               cout<<endl;
+
+           }
+       escritura.close();
+       }
+       break;
+
+        case 5:
+       {
+       escritura.open("Combos.txt",ios::out|ios::app);
+       if(escritura.is_open()){
+           escritura<<endl;
+           escritura<<"-----------------"<<endl;
+           escritura<<endl;
+       }
+       escritura.close();
+       return -1;
+       }
+       break;
+
+       default:
+           cout<<"|=======================================================|"<<endl;
+           cout<<"|=================¡Opcion Incorrecta!===================|"<<endl;
+           cout<<"|=======================================================|"<<endl;
+
+       }
+   }while(n>0);
+
+cin.get();
 
 }
 
 
-void Empleado::salir()
+int Empleado::salir()
 {
     cout<<"|=======================================================|"<<endl;
     cout<<"|==================Proceso finalizado===================|"<<endl;
     cout<<"|=======================================================|"<<endl;
     cout<<endl;
+    return -1;
 }
 
 

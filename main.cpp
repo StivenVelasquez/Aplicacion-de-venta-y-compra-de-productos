@@ -15,6 +15,7 @@ int main()
     int n;
 
     do{
+        cout<<endl;
         cout<<"|-------------------------------------------------------|\n";
         cout<<"|BIENVENIDO AL SISTEMA DE COMPRA DE PRODUCTOS DEL CINE--|\n";
         cout<<"|-----------DE LA UNIVERSIDAD DE ANTIOQUIA--------------|\n";
@@ -140,7 +141,7 @@ int main()
                                             break;
 
                                             case 2:
-                                              //  Empleado.CrearCombo();//Funcion para crear los combos
+                                               Empleado1.CrearCombos();//Funcion para crear los combos
                                             break;
                                             case 3:
                                                 Empleado1.salir();

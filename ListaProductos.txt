@@ -1,0 +1,6 @@
+1         VASOS_PLASTICOS_X_9            9   4000  36000
+2         PAN_PERRO_X_6                  7   8550  59850
+3         SALCHICHA_X_20                 3   7500  22500
+4         CARNE_HAMB_X4                  4   6200  24800
+5         SALSA_ROJA                     3   1600   4800
+6         GASEOSA                        8   2000 160000

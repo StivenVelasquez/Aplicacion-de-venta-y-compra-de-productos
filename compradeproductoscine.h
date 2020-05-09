@@ -20,8 +20,8 @@ class Empleado {
         string GetNombre( ) const;
         string GetContrasena( ) const;
         void registrar();
-        void CrearCombos();
-        void salir();
+        int CrearCombos();
+        int salir();
 };
 
 /*class Cliente
