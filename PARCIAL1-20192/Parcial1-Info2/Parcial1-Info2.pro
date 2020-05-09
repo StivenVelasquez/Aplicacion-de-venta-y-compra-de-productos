@@ -4,10 +4,10 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        compradeproductoscine.cpp \
-        main.cpp \
-        producto.cpp
+        cliente.cpp \
+        empleado.cpp \
+        main.cpp
 
 HEADERS += \
-    compradeproductoscine.h \
-    producto.h
+    cliente.h \
+    empleado.h

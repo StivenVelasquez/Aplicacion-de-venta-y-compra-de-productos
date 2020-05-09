@@ -1,5 +1,9 @@
 #include <iostream>
-#include "compradeproductoscine.h"
+#include "empleado.h"
+#include "cliente.h"
+#include <cstdlib>
+#include <iomanip>
+#include <list>
 
 using namespace std;
 
@@ -34,6 +38,10 @@ int main()
         cout<<endl;
 
         switch (n) {
+
+       //-------------------------------------------------------------------------------------------------------------------------------------
+       //PARA LOS EMPLEADOS
+       //-------------------------------------------------------------------------------------------------------------------------------------
             case 1:
                    {
 
@@ -144,7 +152,7 @@ int main()
                                                Empleado1.CrearCombos();//Funcion para crear los combos
                                             break;
                                             case 3:
-                                                Empleado1.salir();
+                                                Empleado1.salir(); //Para salir
                                             break;
 
                                             default:
@@ -162,6 +170,84 @@ int main()
 
                 }
                 break;
+
+         case 2:
+        {
+         //-----------------------------------------------------------------------------------------------------------------------------------
+         //PARA LOS CLIENTES
+         //-----------------------------------------------------------------------------------------------------------------------------------
+
+            int opcion=0;
+
+            do{
+                cout<<"|.......................................................|"<<endl;
+                cout<<"|.........BIENVENIDO AL PUNTO DE VENTAS DEL CINE........|"<<endl;
+                cout<<"|.......................................................|"<<endl;
+                cout<<"|1. Comprar un combo....................................|"<<endl;
+                cout<<"|3. Salir...............................................|"<<endl;
+                cout<<"|....................QUE DESEA HACER?...................|"<<endl;
+                cout<<"|.......................................................|"<<endl;
+                cout<<endl;
+
+                cin>>opcion;
+                cout<<"--------------------------------------------------------"<<endl;
+                cout<<endl;
+
+                switch (opcion) {
+
+                    case 1:
+
+                    {
+
+                        list<string> lalista; //Lista de string
+                        string line,producto;
+
+                        //Se muestra la lista de los combos, para esto agregamos las lineas del archivo en una lista
+
+                        cout<<"------------------LISTA DE COMBOS-----------------------" << endl;
+                        cout<<"--------------------------------------------------------" <<endl;
+                        cout<<endl;
+
+                        ifstream lectura("Combos.txt"); //Apertura del archivo en modo lectura
+
+                        if(lectura.is_open()){
+                            while (getline(lectura, producto)){ //leer lineas del fichero
+                                lalista.push_back(producto); //Se van agragando las lineas del archivo a la lista
+                                cout << producto << endl;
+                                lalista.pop_back(); //se elimina el ultimo elemento
+                            }
+                        }
+
+                        lectura.close(); //Se cierra el archivo
+
+                        while( lalista.size()!=0 ) //mientras la lista no este vacia
+                        {
+                          producto = lalista.front();
+                          cout << producto << endl;
+                          lalista.pop_front(); //Elimina el primer elemento
+                        }
+
+                        system("PAUSE");
+                        return EXIT_SUCCESS;
+
+             //----------------------------------------------------------------------------------------------
+
+
+
+
+                    } //case 1
+
+                }
+
+
+
+
+               }
+            while(opcion!=0);
+
+        }
+
+
 
 
         case 0:
