@@ -5,7 +5,9 @@ CONFIG -= qt
 
 SOURCES += \
         compradeproductoscine.cpp \
-        main.cpp
+        main.cpp \
+        producto.cpp
 
 HEADERS += \
-    compradeproductoscine.h
+    compradeproductoscine.h \
+    producto.h

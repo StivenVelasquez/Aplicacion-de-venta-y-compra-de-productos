@@ -21,7 +21,7 @@ int main()
         cout<<"|-------------------------------------------------------|\n";
         cout<<"|-------------------------MENU--------------------------|\n";
         cout<<"|-------------------------------------------------------|\n";
-        cout<<"|........Es usted administrador?.......................1|\n";
+        cout<<"|........Es usted empleado?............................1|\n";
         cout<<"|........Es usted cliente?.............................2|\n";
         cout<<"|-------------------------------------------------------|\n";
 
@@ -114,117 +114,53 @@ int main()
 
                     }
 
+                    if(Decision==0){
+                        //Registro de productos
+                        int opcion1=0;
 
+
+                               do{
+                                        cout<<"|.......................................................|"<<endl;
+                                        cout<<"|.......REGISTRO DE PRODUCTOS EN LA BASE DE DATOS.......|"<<endl;
+                                        cout<<"|.......................................................|"<<endl;
+                                        cout<<"|1. Registrar un producto...............................|"<<endl;
+                                        cout<<"|2. Crear un combo para la venta........................|"<<endl;
+                                        cout<<"|3. Salir...............................................|"<<endl;
+                                        cout<<"|....................QUE DESEA HACER?...................|"<<endl;
+                                        cout<<"|.......................................................|"<<endl;
+                                        cout<<endl;
+
+                                        cin>>opcion1;
+                                        cout<<"--------------------------------------------------------"<<endl;
+                                        cout<<endl;
+
+                                        switch(opcion1){
+                                            case 1:
+                                                Empleado1.registrar(); //Funcion para registrar los productos
+                                            break;
+
+                                            case 2:
+                                              //  Empleado.CrearCombo();//Funcion para crear los combos
+                                            break;
+                                            case 3:
+                                                Empleado1.salir();
+                                            break;
+
+                                            default:
+                                                cout<<"|=======================================================|"<<endl;
+                                                cout<<"|=================¡Opcion Incorrecta!===================|"<<endl;
+                                                cout<<"|=======================================================|"<<endl;
+                                        }
+                                    }while(opcion1!=2);
+
+
+                   }
 
                     ficheroAutenticacion.close();  //Se cierra el archivo
 
-               return Decision;
+
                 }
                 break;
-
-
-        case 2:
-        {
-         /* string name;
-          int opcion1=0;
-          do{
-                   cout<<"|.......................................................|"<<endl;
-                   cout<<"|......MENU PARA LA ADQUISION DE PRODUCTOS EN EL CINE...|"<<endl;
-                   cout<<"|.......................................................|"<<endl;
-                   cout<<"|1. COMPRAR PRODUCTOS?..................................|"<<endl;
-                   cout<<"|2. SALIR...............................................|"<<endl;
-                   cout<<"|....................QUE DESEA HACER?...................|"<<endl;
-                   cout<<"|.......................................................|"<<endl;
-                   cout<<endl;
-
-                   cin>>opcion1;
-                   cout<<"--------------------------------------------------------"<<endl;
-                   cout<<endl;
-
-                   switch(opcion1){
-                       case 1:
-                       //Declaracion de variables
-                       ofstream escritura;
-                       ifstream consulta;
-                       bool repetido=false;
-                       string auxCedula;
-
-                       cout<<"INGRESE SU CEDULA POR FAVOR: ";
-                       cin>>auxCedula;
-                       cout<<endl;
-
-
-                       escritura.open("clientes.txt",ios::out|ios::app);
-                       consulta.open("clientes.txt",ios::in);
-
-                        if(escritura.is_open() && consulta.is_open()){
-
-                          consulta>>auxCedula;
-
-                            while(!consulta.eof()){
-                                consulta>>saldo;
-                                if(cedula==auxCedula){
-                                    cout<<"|-------------------------------------------------------|"<<endl;
-                                    cout<<"|----------Ya Existe un Registro con esta Cedula--------|"<<endl;
-                                    cout<<"|-------------------------------------------------------|"<<endl;
-                                    cout<<endl;
-                                    repetido=true;
-                                    break;
-                                }
-
-                            consulta>>Cedula;
-
-                            }
-
-                            if(repetido==false){
-                                cout<<"INGRESA LA CLAVE DEL CLIENTE: ";
-                                cin>>clave;
-                                cout<<endl;
-                                cout<<"INGRESA SU SALDO: ";
-                                cin>>saldo;
-                                cout<<endl;
-
-                                //Se pasa a imprimir los datos en el fichero de una manera organizada
-                                escritura<<left<<setw(10)<<auxCedula<<setw(13)<<clave<<setw(7)<<setprecision(2)<<right<<saldo<<endl;
-                                cout<<endl;
-
-                                cout<<"|=======================================================|"<<endl;
-                                cout<<"|==================Registro Agregado====================|"<<endl;
-                                cout<<"|=======================================================|"<<endl;
-
-                                cout<<endl;
-                            }
-
-
-                        }
-
-                        else{
-                            cout<<"-Error, el Archivo No se Pudo Abrir o No ha sido Creado-"<<endl;
-                            cout<<endl;
-                        }
-
-                       //Cerrando los archivos
-                        escritura.close();
-                        consulta.close();
-
-                       break;
-
-                       case 2:
-                           salir();
-                       break;
-
-                       default:
-                           cout<<"|=======================================================|"<<endl;
-                           cout<<"|=================¡Opcion Incorrecta!===================|"<<endl;
-                           cout<<"|=======================================================|"<<endl;
-                   }
-               }while(opcion1!=2);
-          cin.get();
-     */   }
-
-//Fin funcion menu
-
-            break;
 
 
         case 0:

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <conio.h> // getch
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -18,6 +19,9 @@ class Empleado {
         void SetContrasena( string value);
         string GetNombre( ) const;
         string GetContrasena( ) const;
+        void registrar();
+        void CrearCombos();
+        void salir();
 };
 
 /*class Cliente
