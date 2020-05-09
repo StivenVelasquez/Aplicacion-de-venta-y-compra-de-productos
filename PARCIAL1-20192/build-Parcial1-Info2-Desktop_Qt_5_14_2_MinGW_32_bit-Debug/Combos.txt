@@ -1,0 +1,37 @@
+
+COMBO A
+-----------------
+
+2 PERROS
+3 HAMBURGUESAS
+1 GASEOSAS
+
+-----------------
+
+
+COMBO B
+-----------------
+
+2 PERROS
+2 GASEOSAS
+
+-----------------
+
+COMBO C
+
+-----------------
+
+2 GASEOSAS
+1 PAQUETES DE NACHOS
+
+------------------
+
+COMBO D
+
+------------------
+
+1 HAMBURGUESA
+1 GASEOSA
+
+------------------
+

@@ -1,0 +1,5 @@
+1	VasosPlasticosx9	7	4000	28000
+2	PanPerrox6		7	8550	59850
+3	Salchichax20		3	7500	22500
+4	CarneHambX4		4	6200	24800
+5	SalsaRoja		3	1600	4800
