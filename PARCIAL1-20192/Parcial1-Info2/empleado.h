@@ -22,6 +22,7 @@ class Empleado {
         string GetContrasena( ) const;
         void registrar();
         int CrearCombos();
+        void GenerarReporteVentas();
         int salir();
 };
 

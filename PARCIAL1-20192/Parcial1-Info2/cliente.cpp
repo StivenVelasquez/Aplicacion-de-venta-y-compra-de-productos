@@ -1,4 +1,5 @@
 #include "cliente.h"
+#include <iomanip>
 
 Cliente::Cliente()
 {
@@ -157,8 +158,24 @@ int Cliente::ComprarCombo()
               }
               leer.close(); //Se cierra el fichero
 
+              ofstream escritura;
+              string ID;
+              int Dinero=0;
 
+              escritura.open("ventas.txt",ios::out|ios::app);
 
+               if(escritura.is_open()){
+
+                   while(!escritura.eof()){
+
+                       escritura<<ID<<Dinero<<endl;
+                       //Se pasa a imprimir los datos en el fichero de una manera organizada
+                       escritura<<left<<setw(10)<<IDaux<<setw(13)<<precio<<endl;
+                       cout<<endl;
+                   }
+
+               }
+               escritura.close();
 
                      cout<<endl;
                      cout<<"--------------MUCHAS GRACIAS POR SU COMPRA--------------"<<endl;

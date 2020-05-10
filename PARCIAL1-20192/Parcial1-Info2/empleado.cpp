@@ -386,6 +386,59 @@ cin.get();
 
 }
 
+void Empleado::GenerarReporteVentas()
+{
+    vector<string>list;
+    string linea;
+    ifstream lectura;
+
+    cout<<endl;
+    cout<<left<<setw(10)<<"ID DEL PRODUCTO"<<setw(13)<<setprecision(2)<<right<<"PRECIO"<<endl;
+    cout<<endl;
+
+    lectura.open("ventas.txt");
+    if(lectura.is_open()){
+            while (getline(lectura, linea)){
+            list.push_back(linea);
+            cout << linea << endl;
+            list.pop_back();
+        }
+    }
+    lectura.close();
+
+    //Se imprime el vector
+    for (int i = 0; i < list.size(); i++){
+        cout << list[i];
+        cout << endl;
+    }
+    cout<<endl;
+
+
+    string ID, line;
+    int Plata=0, Platatotal=0;
+
+    list.clear();
+
+    lectura.open("ventas.txt");
+
+    if(lectura.is_open()){
+        lectura>>ID>>Plata;
+        Platatotal=Plata;
+        while (getline(lectura, line,'\n')){
+          lectura>>ID>>Plata;
+          Platatotal+=Plata;
+        }
+    }
+    lectura.close();
+
+    cout<<endl;
+    cout<<"EL DINERO TOTAL VENDIDO EL DIA DE HOY ES DE "<<Platatotal<<endl;
+    cout<<endl;
+    cout<<"-------------------------------------------------------"<<endl;
+
+
+}
+
 
 int Empleado::salir()
 {

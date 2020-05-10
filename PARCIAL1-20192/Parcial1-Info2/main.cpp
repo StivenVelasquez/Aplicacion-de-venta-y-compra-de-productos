@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <iomanip>
 #include <list>
+#include <vector>
 
 using namespace std;
 
@@ -134,7 +135,8 @@ int main()
                                         cout<<"|.......................................................|"<<endl;
                                         cout<<"|1. Registrar un producto...............................|"<<endl;
                                         cout<<"|2. Crear un combo para la venta........................|"<<endl;
-                                        cout<<"|3. Salir...............................................|"<<endl;
+                                        cout<<"|3. Generar reporte de las ventas realizadas al dia.....|"<<endl;
+                                        cout<<"|4. Salir...............................................|"<<endl;
                                         cout<<"|....................QUE DESEA HACER?...................|"<<endl;
                                         cout<<"|.......................................................|"<<endl;
                                         cout<<endl;
@@ -152,6 +154,10 @@ int main()
                                                Empleado1.CrearCombos();//Funcion para crear los combos
                                             break;
                                             case 3:
+                                                Empleado1.GenerarReporteVentas();
+                                            break;
+
+                                            case 4:
                                                 Empleado1.salir(); //Para salir
                                             break;
 
