@@ -31,7 +31,7 @@ int Cliente::ComprarCombo()
     //Declaracion de variables
     ofstream aux;
     ifstream lectura;
-    string ID, linea;
+    string ID, IDaux, linea;
     int opcion=0;
     list<string> listaC; //Lista de string
 
@@ -43,23 +43,30 @@ int Cliente::ComprarCombo()
     cout<<"*****INGRESE EL ID DEL COMBO QUE DESEA COMPRAR*********"<<endl;
     cout<<"======================================================="<<endl;
     cout<<endl;
-    cin>>ID;
+    cin>>IDaux;
 
     ifstream leer("Combos.txt"); //Apertura del archivo en modo lectura
+    string Texto="ID: ";
 
     if(leer.is_open()){
-        while (getline(leer, linea,'*')){ //leer lineas del fichero
-                    listaC.push_back(linea); //Se van agragando las lineas del archivo a la lista
-                    cout << linea << endl;
-                    listaC.pop_back(); //se elimina el ultimo elemento
-                    }
+                    while (getline(leer, linea, '*'))
+                    {
+                        if(linea.find(Texto+IDaux) != string::npos){
+                        listaC.push_back(linea); //Se van agragando las lineas del archivo a la lista
+                        cout << linea << endl;
+                        listaC.pop_back(); //se elimina el ultimo element
+                        }
 
-                }
-                leer.close(); //Se cierra el archivo
+                    }
+             }
+
+
+  leer.close(); //Se cierra el archivo
 
 
             cout<<"----------ESTA SEGURO QUE DE HACER ESTA COMPRA?--------"<<endl;
             cout<<endl;
+
 
             while( listaC.size()!=0 ) //mientras la lista no este vacia
             {
@@ -83,50 +90,44 @@ int Cliente::ComprarCombo()
             switch (opcion) {
 
                 case 1:
-                     cout<<"--------------MUCHAS GRACIAS POR SU COMPRA--------------"<<endl;
-                     cout<<endl;
-                     cout<<"--------------------------------------------------------"<<endl;
-                     return EXIT_SUCCESS;
 
-                case 2:
-                    break;
+            {
+             ifstream leer("ListaPreciosCombos.txt"); //Apertura del archivo en modo lectura
+          //   leer.open("ListaPreciosCombos.txt",ios::in);
+              string precio;
 
-            }
+              if(leer.is_open() ){
+                  cout<<endl;
+                  cout<<"--------------------------------------------------------";
+                  cout<<endl;
 
-    }while(true);
+                  leer>>ID;
 
+                  while(!leer.eof()){
+                      leer>>precio;
+                      if(ID==IDaux){
+                      cout<<endl;
+                      cout<<"________________________________________________________"<<endl;
+                      cout<<"ID: "<<ID<<endl;
+                      cout<<"PRECIO: "<<precio<<endl;
+                      cout<<endl;
+                      }
 
-
+                  leer>>ID;
+                  }
+              }
+              leer.close();
 
 /*
-                        if(lectura.is_open()){
-                            while (getline(lectura, producto)){ //leer lineas del fichero
-                                lalista.push_back(producto); //Se van agragando las lineas del archivo a la lista
-                                cout << producto << endl;
-                                lalista.pop_back(); //se elimina el ultimo elemento
-                            }
-                        }
 
-                        lectura.close(); //Se cierra el archivo
 
-                        while( lalista.size()!=0 ) //mientras la lista no este vacia
-                        {
-                          producto = lalista.front();
-                          cout << producto << endl;
-                          lalista.pop_front(); //Elimina el primer elemento
-                        }
-
-*/
-
-   /* aux.open("auxiliar.txt",ios::out);
-    lectura.open("Combos.txt",ios::in);
 
     if(aux.is_open() && lectura.is_open()){
 
        cout<<endl;
        cout<<"--------------------------------------------------------";
 
-       lectura>>ID;
+       lectura>>Cedula_;
 
        while(!lectura.eof()){
            lectura>>clave_>>saldo_;
@@ -155,35 +156,21 @@ int Cliente::ComprarCombo()
 
                aux<<left<<setw(10)<<Cedula_<<setw(13)<<clave_<<setw(7)<<setprecision(2)<<right<<saldo_<<endl;
                }
+ */
 
-             else{
-                     aux<<left<<setw(10)<<Cedula_<<setw(13)<<clave_<<setw(7)<<setprecision(2)<<right<<saldo_<<endl;
+                     cout<<"--------------MUCHAS GRACIAS POR SU COMPRA--------------"<<endl;
+                     cout<<endl;
+                     cout<<"--------------------------------------------------------"<<endl;
+                     return EXIT_SUCCESS;
+                 }
+                break;
 
-                  }
+                case 2:
+                    break;
 
+            }
 
-          lectura>>Cedula_;
+    }while(true);
 
-           }
-     }
-
-    else
-     {
-              cout<<"--No se pudo abrir el Archivo o aun no ha sido Creado--"<<endl;
-              cout<<endl;
-             }
-
-     if(encontrado_==false){
-              cout<<endl;
-              cout<<"No se encontro ningun registro con ese numero de cedula"<<endl;
-              cout<<endl;
-             }
-
-     aux.close();
-     lectura.close();
-     remove("clientes.txt");
-     rename("auxiliar.txt","clientes.txt");
-
-*/
 
 }

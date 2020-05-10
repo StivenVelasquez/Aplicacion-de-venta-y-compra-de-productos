@@ -4,7 +4,9 @@
 4	CarneHambX4		4	6200	24800
 5	SalsaRoja		3	1600	4800
 
+ID: 1
 COMBO A
+PRECIO: 55000$
 -----------------
 
 2 PERROS
@@ -12,29 +14,39 @@ COMBO A
 1 GASEOSAS
 
 -----------------
+*
 
-
+ID: 2
 COMBO B
+PRECIO: 40000$
 -----------------
 
 2 PERROS
 2 GASEOSAS
 
 -----------------
+*
 
+ID: 3
 COMBO C
+PRECIO: 35000$
+
 -----------------
 
 2 GASEOSAS
 1 PAQUETES DE NACHOS
 
 ------------------
+*
 
+ID: 4
 COMBO D
+PRECIO: 25000$
 ------------------
 
 1 HAMBURGUESA
 1 GASEOSA
 
 ------------------
+*
 

@@ -154,7 +154,7 @@ int Empleado::CrearCombos()
    string line;
    string producto;
    string perro, hamburguesa, gaseosa, nachos;
-   ofstream escritura;
+   ofstream escritura, escritura2;
    ifstream consulta;
 
    cout<<"===================PRODUCTOS DISPONIBLES==============="<<endl;
@@ -195,7 +195,7 @@ int Empleado::CrearCombos()
 
    string linea;
    int cont=0;
-   string ID="ID: ",IDC;
+   string ID="ID:",IDC;
 
    if(consulta.is_open()){
 
@@ -210,12 +210,10 @@ int Empleado::CrearCombos()
                cout<<endl;
                return 0;
    }
+           consulta>>ID>>IDC;;
        }
+       consulta.close();
    }
-
-                   escritura.open("Combos.txt",ios::out|ios::app);
-
-                   if(escritura.is_open()){
 
 
                    cout<<"INGRESE EL NOMBRE QUE DESEA DARLE AL COMBO "<<endl;
@@ -231,18 +229,22 @@ int Empleado::CrearCombos()
                    cout<<endl;
 
                    escritura.open("Combos.txt",ios::out|ios::app);
+                   escritura2.open("ListaPreciosCombos.txt",ios::out|ios::app);
 
-                   if(escritura.is_open()){
+                   if(escritura.is_open()&& escritura2.is_open()){
                       escritura<<endl;
                       escritura<<"ID: "<<IDCombo<<endl;
                       escritura<<"COMBO "<<NombreCombo<<endl;
                       escritura<<"PRECIO: "<<PrecioCombo<<"$"<<endl;
                       escritura<<"-----------------"<<endl;
                       escritura<<endl;
+
+                   escritura2<<left<<setw(10)<<IDCombo<<setw(13)<<PrecioCombo;
                    }
 
+                   escritura2.close();
                    escritura.close();
-               }
+
 
 
 do{

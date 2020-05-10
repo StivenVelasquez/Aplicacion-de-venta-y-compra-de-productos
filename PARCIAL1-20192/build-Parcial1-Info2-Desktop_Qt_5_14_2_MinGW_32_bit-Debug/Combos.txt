@@ -3,6 +3,7 @@ ID: 1
 COMBO A
 PRECIO: 55000$
 -----------------
+*
 
 2 PERROS
 3 HAMBURGUESAS
@@ -22,18 +23,6 @@ PRECIO: 40000$
 -----------------
 *
 
-ID: 3
-COMBO C
-PRECIO: 35000$
-
------------------
-
-2 GASEOSAS
-1 PAQUETES DE NACHOS
-
-------------------
-*
-
 ID: 4
 COMBO D
 PRECIO: 25000$
@@ -44,4 +33,5 @@ PRECIO: 25000$
 
 ------------------
 *
+
 
