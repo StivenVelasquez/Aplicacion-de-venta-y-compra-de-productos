@@ -87,6 +87,8 @@ int Cliente::ComprarCombo()
             cout<<"--------------------------------------------------------"<<endl;
             cout<<endl;
 
+            int CantidadDinero; //  Variable que representa la cantidad de dinero con el que el usuario pagara el combo
+
             switch (opcion) {
 
                 case 1:
@@ -94,7 +96,8 @@ int Cliente::ComprarCombo()
             {
              ifstream leer("ListaPreciosCombos.txt"); //Apertura del archivo en modo lectura
           //   leer.open("ListaPreciosCombos.txt",ios::in);
-              string precio;
+              int precio;
+              int division,restando, Devuelta;
 
               if(leer.is_open() ){
                   cout<<endl;
@@ -108,56 +111,56 @@ int Cliente::ComprarCombo()
                       if(ID==IDaux){
                       cout<<endl;
                       cout<<"________________________________________________________"<<endl;
-                      cout<<"ID: "<<ID<<endl;
-                      cout<<"PRECIO: "<<precio<<endl;
                       cout<<endl;
+                      cout<<endl;
+                      cout<<endl;
+                      cout<<"======================================================="<<endl;
+                      cout<<"***EL PRECIO DEL COMBO QUE ELIGIO ES DE "<<precio<<"$**"<<endl;
+                      cout<<"======================================================="<<endl;
+                      cout<<endl;
+                      cout<<endl;
+
+                      cout<<"INGRESE LA CANTIDAD DE DINERO CON EL QUE DESEA PAGAR SU PEDIDO"<<endl;
+                      cin>>CantidadDinero;
+                      cout<<"--------------------------------------------------------------"<<endl;
+                      cout<<endl;
+                      cout<<endl;
+
+                      Devuelta=CantidadDinero-precio;
+
+                      cout<<"A CONTINUACIÓN SE MUESTRA SU DEVUELTA: "<<endl;
+                      cout<<"--------------------------------------------------------------"<<endl;
+                      cout<<endl;
+
+                      int cantidades[10]={50000,20000,10000,5000,2000,1000,500,200,100,50};//lista donde se guardan las cantidades dadas
+                      for(int i=0;i<=10;i++){//recorre la lista cantidades
+                          division=Devuelta/cantidades[i];//divide el dinero por cada valor en cantidades
+                          if(division==0){
+                              cout<<cantidades[i]<<" : "<<division<<endl;
+                              if(cantidades[i]==50){
+                                  break;
+                              }
+                          }
+                          else {
+                              restando=division*cantidades[i];
+                              Devuelta=Devuelta-restando;//actualiza el dinero
+                              cout<<cantidades[i]<<" : "<<division<<endl;
+
+                          }
+
+                      }
+
                       }
 
                   leer>>ID;
                   }
               }
-              leer.close();
-
-/*
+              leer.close(); //Se cierra el fichero
 
 
 
-    if(aux.is_open() && lectura.is_open()){
 
-       cout<<endl;
-       cout<<"--------------------------------------------------------";
-
-       lectura>>Cedula_;
-
-       while(!lectura.eof()){
-           lectura>>clave_>>saldo_;
-           if(auxCedula==Cedula_){
-               encontrado_=true;
-               cout<<endl;
-               cout<<"________________________________________________________"<<endl;
-               cout<<"Cedula: "<<Cedula_<<endl;
-               cout<<"Clave: "<<clave_<<endl;
-               cout<<"Saldo: "<<saldo_<<endl;
-               cout<<"________________________________________________________"<<endl;
-               cout<<endl;
-
-             //CONDICION PARA DEBITAR POR LA CONSULTA EN CASO DE QUE EL MONTO DE SU CUENTA
-             if(saldo_>=1000){
-                                 saldo_modificado=saldo_-1000;
-
-                                 cout<<"|.......................................................|"<<endl;
-                                 cout<<"|......ADVERTENCIA! ACABAMOS DE DEBITAR 1000 COP........|"<<endl;
-                                 cout<<"|.....DE SU CUENTA POR CONSULTAR EN NUESTRO BANCO.......|"<<endl;
-                                 cout<<"|.......................................................|"<<endl;
-                                 cout<<endl;
-
-                                 saldo_=saldo_modificado;
-                         }
-
-               aux<<left<<setw(10)<<Cedula_<<setw(13)<<clave_<<setw(7)<<setprecision(2)<<right<<saldo_<<endl;
-               }
- */
-
+                     cout<<endl;
                      cout<<"--------------MUCHAS GRACIAS POR SU COMPRA--------------"<<endl;
                      cout<<endl;
                      cout<<"--------------------------------------------------------"<<endl;
