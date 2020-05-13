@@ -1,0 +1,55 @@
+1         VASOS_PLASTICOS            7   4000  28000
+2         PAN_PERRO             2   8550  17100
+3         SALCHICHA             1   8550   8550
+4         CARNE_HAMB            2   6200  12400
+5         SALSA_ROJA            0   1000      0
+6         GASEOSA               4   2000   8000
+7         PAN_HAM               4   2000   8000
+8         PAQ_NACHOS            6   1000   6000
+
+ID: 1
+COMBO A
+PRECIO: 55000$
+-----------------
+
+2 PERROS
+3 HAMBURGUESAS
+1 GASEOSAS
+
+-----------------
+*
+
+ID: 2
+COMBO B
+PRECIO: 40000$
+-----------------
+
+2 PERROS
+2 GASEOSAS
+
+-----------------
+*
+
+ID: 3
+COMBO C
+PRECIO: 35000$
+
+-----------------
+
+2 GASEOSAS
+1 PAQUETES DE NACHOS
+
+------------------
+*
+
+ID: 4
+COMBO D
+PRECIO: 25000$
+------------------
+
+1 HAMBURGUESA
+1 GASEOSA
+
+------------------
+*
+

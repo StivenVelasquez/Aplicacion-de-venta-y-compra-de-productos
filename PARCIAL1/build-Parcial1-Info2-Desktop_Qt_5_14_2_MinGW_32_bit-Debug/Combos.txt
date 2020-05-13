@@ -1,0 +1,27 @@
+
+
+ID: 1
+COMBO A
+PRECIO: 34000$
+-----------------
+
+PERROS: 2
+HAMBURGUESAS: 2
+GASEOSAS: 2
+
+-----------------
+*
+
+
+ID: 2
+COMBO B
+PRECIO: 50000$
+-----------------
+
+PERROS: 4
+GASEOSAS: 3
+PAQUETES DE NACHOS: 2
+
+-----------------
+*
+

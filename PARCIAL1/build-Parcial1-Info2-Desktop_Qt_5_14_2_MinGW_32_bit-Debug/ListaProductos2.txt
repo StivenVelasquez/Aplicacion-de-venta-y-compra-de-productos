@@ -1,0 +1,8 @@
+VASOS_PLASTICOS            9
+PAN_PERRO             6
+SALCHICHA            22
+CARNE_HAMB            4
+SALSA_ROJA            3
+GASEOSA               8
+PAN_HAM               8
+PAQ_NACHOS           10
