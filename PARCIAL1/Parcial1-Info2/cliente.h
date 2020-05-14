@@ -12,14 +12,16 @@ class Cliente
 {
 
 private:
-    string NombreCliente, Cedula;
+    string NombreCliente, Cedula, Asiento;
 
 public:
     Cliente();//Constructor
     void setNombreCliente(string value);
     void setcedula(string value);
+    void setAsiento(string value);
     string getNombreCliente() const;
     string getCedula() const;
+    string getAsiento() const;
     int ComprarCombo();
    void  DescontarIngredienteCombo();
     void inserta_nombre(string linea, map<string, string>& nombres); //Funcion para descontar ingredientes

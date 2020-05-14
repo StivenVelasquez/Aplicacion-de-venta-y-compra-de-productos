@@ -24,6 +24,11 @@ void Cliente::setcedula(string value)
     Cedula=value;
 }
 
+void Cliente::setAsiento(string value)
+{
+    Asiento=value;
+}
+
 string Cliente::getNombreCliente() const
 {
     return NombreCliente;
@@ -32,6 +37,11 @@ string Cliente::getNombreCliente() const
 string Cliente::getCedula() const
 {
     return Cedula;
+}
+
+string Cliente::getAsiento() const
+{
+    return  Asiento;
 }
 
 int Cliente::ComprarCombo()
@@ -199,97 +209,237 @@ int Cliente::ComprarCombo()
 
                                     cout<<"---------------------------------------------------------"<<endl;
 
+                                    string OpcionAsiento=0;
+
                                     switch (OpcSala){
 
                                         case 1:
                                         {
                                             cout<<endl;
-                                            cout<<"INGRESE POR FAVOR EL NUMERO DE SU ASIENTO: "<<endl;
+                                            //Declaracion de variables
+                                            ofstream escritura;
+                                            ifstream consulta;
+                                            bool repetido=false;
+                                            string linea;
 
+                                            cout<<"A CONTINUACION SE MUESTRAN LOS ASIENTOS OCUPADOS"<<endl;
+                                            cout<<endl;
+
+                                            ifstream lectura("Sala de Cine 1.txt"); //Apertura del archivo en modo lectura
+                                            if(lectura.is_open()){
+                                                while (getline(lectura, linea)){
+
+                                                    cout <<"Asiento: "<< linea <<" esta ocupado"<<endl;
+
+                                                }
+                                            }
+                                            lectura.close();
+
+                                            cout<<"INGRESE EL NUMERO DE SU ASIENTO: ";
+                                            cin>>OpcionAsiento;
+                                            cout<<endl;
+
+                                            escritura.open("Sala de Cine 1.txt",ios::out|ios::app);
+                                            consulta.open("Sala de Cine 1.txt",ios::in);
+
+                                             if(escritura.is_open() && consulta.is_open()){
+
+                                                 consulta>>linea;
+
+                                                 while(!consulta.eof()){
+                                                     if(linea==OpcionAsiento){
+                                                         cout<<"|-------------------------------------------------------|"<<endl;
+                                                         cout<<"|-----Este asiento esta ocupado, ingrese otra opcion----|"<<endl;
+                                                         cout<<"|-------------------------------------------------------|"<<endl;
+                                                         cout<<endl;
+                                                         repetido=true;
+                                                         break;
+                                                     }
+
+                                                 consulta>>linea;
+
+                                                 }
+
+                                                 if(repetido==false){
+
+
+                                                     //Se pasa a imprimir los datos en el fichero de una manera organizada
+                                                     escritura<<left<<setw(10)<<OpcionAsiento<<endl;
+                                                     cout<<endl;
+
+                                                     cout<<"|=======================================================|"<<endl;
+                                                     cout<<"|==================Asiento ocupado======================|"<<endl;
+                                                     cout<<"|=======================================================|"<<endl;
+
+                                                     cout<<endl;
+                                                 }
+
+
+                                             }
+
+                                             else{
+                                                 cout<<"-Error, el Archivo No se Pudo Abrir o No ha sido Creado-"<<endl;
+                                                 cout<<endl;
+                                             }
+
+                                            //Cerrando los archivos
+                                             escritura.close();
+                                             consulta.close();
 
                                         }
+                                        break;
+
+                                    case 2:
+                                    {
+                                        cout<<endl;
+                                        //Declaracion de variables
+                                        ofstream escritura;
+                                        ifstream consulta;
+                                        bool repetido=false;
+                                        string linea;
+
+                                        cout<<"A CONTINUACION SE MUESTRAN LOS ASIENTOS OCUPADOS"<<endl;
+                                        cout<<endl;
+
+                                        ifstream lectura("Sala de Cine 2.txt"); //Apertura del archivo en modo lectura
+                                        if(lectura.is_open()){
+                                            while (getline(lectura, linea)){
+
+                                                cout <<"Asiento: "<< linea <<" esta ocupado"<<endl;
+
+                                            }
+                                        }
+                                        lectura.close();
+
+                                        cout<<"INGRESE EL NUMERO DE SU ASIENTO: ";
+                                        cin>>OpcionAsiento;
+                                        cout<<endl;
+
+                                        escritura.open("Sala de Cine 2.txt",ios::out|ios::app);
+                                        consulta.open("Sala de Cine 2.txt",ios::in);
+
+                                         if(escritura.is_open() && consulta.is_open()){
+
+                                             consulta>>linea;
+
+                                             while(!consulta.eof()){
+                                                 if(linea==OpcionAsiento){
+                                                     cout<<"|-------------------------------------------------------|"<<endl;
+                                                     cout<<"|-----Este asiento esta ocupado, ingrese otra opcion----|"<<endl;
+                                                     cout<<"|-------------------------------------------------------|"<<endl;
+                                                     cout<<endl;
+                                                     repetido=true;
+                                                     break;
+                                                 }
+
+                                             consulta>>linea;
+
+                                             }
+
+                                             if(repetido==false){
+
+
+                                                 //Se pasa a imprimir los datos en el fichero de una manera organizada
+                                                 escritura<<left<<setw(10)<<OpcionAsiento<<endl;
+                                                 cout<<endl;
+
+                                                 cout<<"|=======================================================|"<<endl;
+                                                 cout<<"|==================Asiento ocupado======================|"<<endl;
+                                                 cout<<"|=======================================================|"<<endl;
+
+                                                 cout<<endl;
+                                             }
+
+
+                                         }
+
+                                         else{
+                                             cout<<"-Error, el Archivo No se Pudo Abrir o No ha sido Creado-"<<endl;
+                                             cout<<endl;
+                                         }
+
+                                        //Cerrando los archivos
+                                         escritura.close();
+                                         consulta.close();
                                     }
 
+                                    case 3:
+                                    {
+                                        cout<<endl;
+                                        //Declaracion de variables
+                                        ofstream escritura;
+                                        ifstream consulta;
+                                        bool repetido=false;
+                                        string linea;
+
+                                        cout<<"A CONTINUACION SE MUESTRAN LOS ASIENTOS OCUPADOS"<<endl;
+                                        cout<<endl;
+
+                                        ifstream lectura("Sala de Cine 3.txt"); //Apertura del archivo en modo lectura
+                                        if(lectura.is_open()){
+                                            while (getline(lectura, linea)){
+
+                                                cout <<"Asiento: "<< linea <<" esta ocupado"<<endl;
+
+                                            }
+                                        }
+                                        lectura.close();
+
+                                        cout<<"INGRESE EL NUMERO DE SU ASIENTO: ";
+                                        cin>>OpcionAsiento;
+                                        cout<<endl;
+
+                                        escritura.open("Sala de Cine 3.txt",ios::out|ios::app);
+                                        consulta.open("Sala de Cine 3.txt",ios::in);
+
+                                         if(escritura.is_open() && consulta.is_open()){
+
+                                             consulta>>linea;
+
+                                             while(!consulta.eof()){
+                                                 if(linea==OpcionAsiento){
+                                                     cout<<"|-------------------------------------------------------|"<<endl;
+                                                     cout<<"|-----Este asiento esta ocupado, ingrese otra opcion----|"<<endl;
+                                                     cout<<"|-------------------------------------------------------|"<<endl;
+                                                     cout<<endl;
+                                                     repetido=true;
+                                                     break;
+                                                 }
+
+                                             consulta>>linea;
+
+                                             }
+
+                                             if(repetido==false){
 
 
+                                                 //Se pasa a imprimir los datos en el fichero de una manera organizada
+                                                 escritura<<left<<setw(10)<<OpcionAsiento<<endl;
+                                                 cout<<endl;
+
+                                                 cout<<"|=======================================================|"<<endl;
+                                                 cout<<"|==================Asiento ocupado======================|"<<endl;
+                                                 cout<<"|=======================================================|"<<endl;
+
+                                                 cout<<endl;
+                                             }
 
 
+                                         }
 
+                                         else{
+                                             cout<<"-Error, el Archivo No se Pudo Abrir o No ha sido Creado-"<<endl;
+                                             cout<<endl;
+                                         }
 
-                                     /*
-//Librerias
-#include <iostream>
-#include <cstdio>
-#include <cstdlib>
+                                        //Cerrando los archivos
+                                         escritura.close();
+                                         consulta.close();
+                                    }
 
-//Espacio de nombres
-using namespace std;
-
-int main()
-//CINE
-{
-    bool CAD[15][20];
-    int op=1, Fila, columna, cond;
-
-    for(int i=0; i<15;i++){
-        for(int j=0; j<20; j++){
-            CAD[i][j]=0; //Todas los asientos estan disponibles
-        }
-    }
-    do{
-        cout<< "1-Reservar boleta"<<endl<<
-           "2-Ver disponibilidad de sillas"<<endl<<
-           "3-Cancelar reserva"<<endl<<endl;
-
-        cin>>op;
-        switch (op) {
-        case 1: //Reservar boleta
-        cout<<"\nFila: ";
-        cin>> Fila;
-        cout<<"\nColumna: ";
-        cin>>columna;
-        CAD[Fila-1][columna-1]=1;
-        break;
-        case 2:
-        for(int i=0; i<15;i++){
-            for(int j=0; j<20; j++){
-                if(CAD[i][j]==0)
-                cout<< char(176);
-                else
-                    cout<<char(1);
-            }
-            cout<<endl;
-        }
-        break;
-        case 3:
-                cout<<"Desea retirar la reserva. Digite 1 para retirarla o 2 para dejarla tal cual esta "<<endl;
-                cin>>cond;
-
-                if(cond==1){
-                    cout<<"\nFila: ";
-                    cin>>Fila;
-                    cout<<"\nColumna";
-                    cin>>columna;
-                    CAD[Fila-1][columna-1]=0;
-                }
-                else
-                    for(int i=0; i<15;i++){
-                        for(int j=0; j<20; j++){
-                            CAD[i][j]=0;
-                        }
-                    }
-        break;
-        default:
-                op=0;
-        }
-      }
-        while(op!=0);
-
-    return 0;
-}
-
-
-*/
+                                    default:
+                                        break;
+                               }
 
                                      cout<<endl;
                                      cout<<"--------------MUCHAS GRACIAS POR SU COMPRA--------------"<<endl;

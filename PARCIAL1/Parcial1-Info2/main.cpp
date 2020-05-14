@@ -43,7 +43,7 @@ int main()
        //-------------------------------------------------------------------------------------------------------------------------------------
        //PARA LOS EMPLEADOS
        //-------------------------------------------------------------------------------------------------------------------------------------
-            case 2:
+            case 1:
                    {
 
                     //Declaracion de variables
@@ -177,13 +177,325 @@ int main()
                 }
                 break;
 
-         case 1:
+         case 2:
         {
          //-----------------------------------------------------------------------------------------------------------------------------------
          //PARA LOS CLIENTES
          //-----------------------------------------------------------------------------------------------------------------------------------
 
-            int opcion=0;
+            int opcion=0, opcion2;
+
+            cout<<"|.......................................................|"<<endl;
+            cout<<"|.........BIENVENIDO AL PUNTO DE VENTAS DEL CINE........|"<<endl;
+            cout<<"|.......................................................|"<<endl;
+            cout<<"|1. Registrarse.........................................|"<<endl;
+            cout<<"|2. Salir...............................................|"<<endl;
+            cout<<"|....................QUE DESEA HACER?...................|"<<endl;
+            cout<<"|.......................................................|"<<endl;
+            cout<<endl;
+
+            cin>>opcion2;
+            cout<<"--------------------------------------------------------"<<endl;
+            cout<<endl;
+
+            switch (opcion2) {
+
+                case 1:
+                {
+                cout<<endl;
+                cout<<"|.......................................................|"<<endl;
+                cout<<"|....INGRESE EL NUMERO DE SALA DONDE DESEA UBICARSE.....|"<<endl;
+                cout<<"|.......................................................|"<<endl;
+                cout<<"|.......................................................|"<<endl;
+                cout<<"|1. SALA 1..............................................|"<<endl;
+                cout<<"|2. SALA 2..............................................|"<<endl;
+                cout<<"|3. SALA 3..............................................|"<<endl;
+                cout<<"|.......................................................|"<<endl;
+                cout<<"|....................INGRESE LA SALA....................|"<<endl;
+                cout<<"|.......................................................|"<<endl;
+
+                int OpcSala;
+
+                cout<<"INGRESE UNA OPCION"<<endl;
+
+                cin>>OpcSala;
+
+                cout<<"---------------------------------------------------------"<<endl;
+
+                string OpcionAsiento=0;
+
+                switch (OpcSala){
+
+                    case 1:
+                    {
+                        cout<<endl;
+                        //Declaracion de variables
+                        ofstream escritura;
+                        ifstream consulta;
+                        bool repetido=false;
+                        string linea, linea2, linea3, linea4;
+
+                        cout<<"A CONTINUACION SE MUESTRAN LOS ASIENTOS OCUPADOS"<<endl;
+                        cout<<endl;
+
+                        ifstream lectura("Sala de Cine 1.txt"); //Apertura del archivo en modo lectura
+                        if(lectura.is_open()){
+                            while (getline(lectura, linea)){
+
+                                cout <<"Asiento: "<< linea <<" esta ocupado"<<endl;
+
+                            }
+                        }
+                        lectura.close();
+
+                        cout<<"INGRESE EL NUMERO DEL ASIENTO QUE DESEA OCUPAR: ";
+                        cin>>OpcionAsiento;
+                        Cliente1.setcedula(OpcionAsiento);
+                        cout<<endl;
+
+                        escritura.open("Sala de Cine 1.txt",ios::out|ios::app);
+                        consulta.open("Sala de Cine 1.txt",ios::in);
+
+                         if(escritura.is_open() && consulta.is_open()){
+
+                             consulta>>linea>>linea2>>linea3>>linea4;
+
+                             while(!consulta.eof()){
+                                 if(linea4==Cliente1.getAsiento()){
+                                     cout<<"|-------------------------------------------------------|"<<endl;
+                                     cout<<"|-----------------Este asiento esta ocupado-------------|"<<endl;
+                                     cout<<"|-------------------------------------------------------|"<<endl;
+                                     cout<<endl;
+                                     repetido=true;
+                                     return 0;
+                                 }
+
+                             consulta>>linea;
+
+                             }
+
+                             if(repetido==false){
+
+                                 string nombre, cedula;
+                                 cout<<"INGRESE SU NOMBRE: ";
+                                 cin>>nombre;
+                                 Cliente1.setNombreCliente(nombre);
+                                 cout<<endl;
+                                 cout<<"INGRESE SU NUMERO DE IDENTIFICACION: ";
+                                 cin>>cedula;
+                                 Cliente1.setcedula(cedula);
+                                 cout<<endl;
+
+                                 //Se pasa a imprimir los datos en el fichero de una manera organizada
+                                 escritura<<left<<setw(10)<<Cliente1.getNombreCliente()<<setw(13)<<Cliente1.getCedula()<<setw(7)<<setprecision(2)<<right<<OpcSala<<setw(7)<<setprecision(2)<<right<<Cliente1.getAsiento()<<endl;
+
+                                 cout<<endl;
+
+                                 cout<<"|=======================================================|"<<endl;
+                                 cout<<"|======Registro Agregado bienvenido a nuestro cine======|"<<endl;
+                                 cout<<"|=======================================================|"<<endl;
+
+                                 cout<<endl;
+
+                                 cout<<endl;
+                             }
+
+
+                         }
+
+                         else{
+                             cout<<"-Error, el Archivo No se Pudo Abrir o No ha sido Creado-"<<endl;
+                             cout<<endl;
+                         }
+
+                        //Cerrando los archivos
+                         escritura.close();
+                         consulta.close();
+
+                    }
+                    break;
+
+                case 2:
+                {
+                    cout<<endl;
+                    //Declaracion de variables
+                    ofstream escritura;
+                    ifstream consulta;
+                    bool repetido=false;
+                    string linea, linea2, linea3, linea4;
+
+                    cout<<"A CONTINUACION SE MUESTRAN LOS ASIENTOS OCUPADOS"<<endl;
+                    cout<<endl;
+
+                    ifstream lectura("Sala de Cine 2.txt"); //Apertura del archivo en modo lectura
+                    if(lectura.is_open()){
+                        while (getline(lectura, linea)){
+
+                            cout <<"Asiento: "<< linea <<" esta ocupado"<<endl;
+
+                        }
+                    }
+                    lectura.close();
+
+                    cout<<"INGRESE EL NUMERO DEL ASIENTO QUE DESEA OCUPAR: ";
+                    cin>>OpcionAsiento;
+                    Cliente1.setcedula(OpcionAsiento);
+                    cout<<endl;
+
+                    escritura.open("Sala de Cine 2.txt",ios::out|ios::app);
+                    consulta.open("Sala de Cine 2.txt",ios::in);
+
+                     if(escritura.is_open() && consulta.is_open()){
+
+                         consulta>>linea>>linea2>>linea3>>linea4;
+
+                         while(!consulta.eof()){
+                             if(linea4==Cliente1.getAsiento()){
+                                 cout<<"|-------------------------------------------------------|"<<endl;
+                                 cout<<"|-----------------Este asiento esta ocupado-------------|"<<endl;
+                                 cout<<"|-------------------------------------------------------|"<<endl;
+                                 cout<<endl;
+                                 repetido=true;
+                                 return 0;
+                             }
+
+                         consulta>>linea;
+
+                         }
+
+                         if(repetido==false){
+
+                             string nombre, cedula;
+                             cout<<"INGRESE SU NOMBRE: ";
+                             cin>>nombre;
+                             Cliente1.setNombreCliente(nombre);
+                             cout<<endl;
+                             cout<<"INGRESE SU NUMERO DE IDENTIFICACION: ";
+                             cin>>cedula;
+                             Cliente1.setcedula(cedula);
+                             cout<<endl;
+
+                             //Se pasa a imprimir los datos en el fichero de una manera organizada
+                             escritura<<left<<setw(10)<<Cliente1.getNombreCliente()<<setw(13)<<Cliente1.getCedula()<<setw(7)<<setprecision(2)<<right<<OpcSala<<setw(7)<<setprecision(2)<<right<<Cliente1.getAsiento()<<endl;
+
+                             cout<<endl;
+
+                             cout<<"|=======================================================|"<<endl;
+                             cout<<"|======Registro Agregado bienvenido a nuestro cine======|"<<endl;
+                             cout<<"|=======================================================|"<<endl;
+
+                             cout<<endl;
+
+                             cout<<endl;
+                         }
+
+
+                     }
+
+                     else{
+                         cout<<"-Error, el Archivo No se Pudo Abrir o No ha sido Creado-"<<endl;
+                         cout<<endl;
+                     }
+
+                    //Cerrando los archivos
+                     escritura.close();
+                     consulta.close();
+                }
+
+                case 3:
+                {
+                    cout<<endl;
+                    //Declaracion de variables
+                    ofstream escritura;
+                    ifstream consulta;
+                    bool repetido=false;
+                    string linea, linea2, linea3, linea4;
+
+                    cout<<"A CONTINUACION SE MUESTRAN LOS ASIENTOS OCUPADOS"<<endl;
+                    cout<<endl;
+
+                    ifstream lectura("Sala de Cine 3.txt"); //Apertura del archivo en modo lectura
+                    if(lectura.is_open()){
+                        while (getline(lectura, linea)){
+
+                            cout <<"Asiento: "<< linea <<" esta ocupado"<<endl;
+
+                        }
+                    }
+                    lectura.close();
+
+                    cout<<"INGRESE EL NUMERO DEL ASIENTO QUE DESEA OCUPAR: ";
+                    cin>>OpcionAsiento;
+                    Cliente1.setcedula(OpcionAsiento);
+                    cout<<endl;
+
+                    escritura.open("Sala de Cine 3.txt",ios::out|ios::app);
+                    consulta.open("Sala de Cine 3.txt",ios::in);
+
+                     if(escritura.is_open() && consulta.is_open()){
+
+                         consulta>>linea>>linea2>>linea3>>linea4;
+
+                         while(!consulta.eof()){
+                             if(linea4==Cliente1.getAsiento()){
+                                 cout<<"|-------------------------------------------------------|"<<endl;
+                                 cout<<"|-----------------Este asiento esta ocupado-------------|"<<endl;
+                                 cout<<"|-------------------------------------------------------|"<<endl;
+                                 cout<<endl;
+                                 repetido=true;
+                                 return 0;
+                             }
+
+                         consulta>>linea;
+
+                         }
+
+                         if(repetido==false){
+
+                             string nombre, cedula;
+                             cout<<"INGRESE SU NOMBRE: ";
+                             cin>>nombre;
+                             Cliente1.setNombreCliente(nombre);
+                             cout<<endl;
+                             cout<<"INGRESE SU NUMERO DE IDENTIFICACION: ";
+                             cin>>cedula;
+                             Cliente1.setcedula(cedula);
+                             cout<<endl;
+
+                             //Se pasa a imprimir los datos en el fichero de una manera organizada
+                             escritura<<left<<setw(10)<<Cliente1.getNombreCliente()<<setw(13)<<Cliente1.getCedula()<<setw(7)<<setprecision(2)<<right<<OpcSala<<setw(7)<<setprecision(2)<<right<<Cliente1.getAsiento()<<endl;
+
+                             cout<<endl;
+
+                             cout<<"|=======================================================|"<<endl;
+                             cout<<"|======Registro Agregado bienvenido a nuestro cine======|"<<endl;
+                             cout<<"|=======================================================|"<<endl;
+
+                             cout<<endl;
+
+                             cout<<endl;
+                         }
+
+
+                     }
+
+                     else{
+                         cout<<"-Error, el Archivo No se Pudo Abrir o No ha sido Creado-"<<endl;
+                         cout<<endl;
+                     }
+
+                    //Cerrando los archivos
+                     escritura.close();
+                     consulta.close();
+                }
+
+                default:
+                    break;
+                }
+
+            }
+            }
+
 
             do{
                 cout<<"|.......................................................|"<<endl;
