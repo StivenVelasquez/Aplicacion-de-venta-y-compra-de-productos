@@ -36,7 +36,7 @@ int main()
 
         cout<<"INGRESE UNA OPCION: ";
         cin>>n;
-        cout<<"--------------------------------------------------------"<<endl;
+        cout<<"---------------------------------------------------------"<<endl;
         cout<<endl;
 
         switch (n) {
@@ -160,6 +160,7 @@ int main()
 
                             case 4:
                                 Empleado1.salir(); //Para salir
+                                return 0;
                             break;
 
                             default:
@@ -167,7 +168,7 @@ int main()
                                 cout<<"|=================¡Opcion Incorrecta!===================|"<<endl;
                                 cout<<"|=======================================================|"<<endl;
                         }
-                    }while(opcion1!=2);
+                   }while(opcion1!=2);
                  }
          ficheroAutenticacion.close();  //Se cierra el archivo donde esta la contraseña de autenticacion
          }
@@ -195,14 +196,12 @@ int main()
             cout<<endl;
 
         do{
+
             switch (opcion2) {
 
                 case 1:
                 {
                 cout<<endl;
-                if(Cliente1.ComprarCombo()==3){
-                    break;
-                }
                 cout<<"|.......................................................|"<<endl;
                 cout<<"|....INGRESE EL NUMERO DE SALA DONDE DESEA UBICARSE.....|"<<endl;
                 cout<<"|.......................................................|"<<endl;
@@ -246,8 +245,8 @@ int main()
                         cout<<endl;
 
                         ifstream lectura("Sala de Cine 1.txt"); //Apertura del archivo en modo lectura
-                        if(lectura.is_open()){
-                            while (getline(lectura, linea)){
+                        if(lectura.is_open()){//si archivo esta abierto
+                            while (getline(lectura, linea)){ //leer lineas del archivo
 
                                 cout << linea <<endl;
                                 cout<<endl;
@@ -255,14 +254,28 @@ int main()
                                 cout<<endl;
                             }
                         }
-                        lectura.close();
+                        lectura.close(); //cerrar fichero
 
-                        cout<<"INGRESE EL NUMERO DEL ASIENTO QUE DESEA OCUPAR: ";
+                        cout<<"---------------------------------------------------------"<<endl;
+                        cout<<"-------INGRESE EL NUMERO DEL ASIENTO QUE DESEA OCUPAR:---"<<endl;
+                        cout<<"---------ESTE NUMERO NO PUEDE ECCEDER EL LIMITE----------"<<endl;
+                        cout<<"-------------QUE ES DE 15 PERSONAS POR SALA--------------"<<endl;
+                        cout<<"---------------------------------------------------------"<<endl;
+                        cout<<endl;
                         cin>>OpcionAsiento;
                         Cliente1.setAsiento(OpcionAsiento);
                         cout<<endl;
-                        cout<<"********************************************************"<<endl;
+                        cout<<"*********************************************************"<<endl;
                         cout<<endl;
+
+                        //Se transforma el string a entero para hacer el condicional
+                        if(atoi(Cliente1.getAsiento().c_str())<=0 ||atoi(Cliente1.getAsiento().c_str())>=15){
+                            cout<<"------------INGRESE OTRO ASIENTO POR FAVOR----------------"<<endl;
+                            break;
+                        }
+
+                        cout<<endl;
+
 
                         escritura.open("Sala de Cine 1.txt",ios::out|ios::app); //Se abre el archivo en modo escritura
                         consulta.open("Sala de Cine 1.txt",ios::in); //Se abre el archivo en modo lectura
@@ -272,17 +285,17 @@ int main()
                              consulta>>linea>>linea2>>linea3>>linea4; //Se lee los parametros que estan en el fichero
 
                              while(!consulta.eof()){ //Mientras el archivo no llegue a su fin
-                                 if(linea4==Cliente1.getAsiento()){
+                                 if(linea4==Cliente1.getAsiento()){ //Si se encuentra el asiento
                                      cout<<endl;
                                      cout<<"|-------------------------------------------------------|"<<endl;
                                      cout<<"|-----------------Este asiento esta ocupado-------------|"<<endl;
                                      cout<<"|-------------------------------------------------------|"<<endl;
                                      cout<<endl;
-                                     repetido=true;
+                                     repetido=true; //asiento repetido
                                      break;
                                  }
 
-                             consulta>>linea>>linea2>>linea3>>linea4;
+                             consulta>>linea>>linea2>>linea3>>linea4; //lectura
 
                              }
 
@@ -343,8 +356,8 @@ int main()
                         cout<<endl;
 
                         ifstream lectura("Sala de Cine 2.txt"); //Apertura del archivo en modo lectura
-                        if(lectura.is_open()){
-                            while (getline(lectura, linea)){
+                        if(lectura.is_open()){ //Si archivo esta abierto
+                            while (getline(lectura, linea)){ //Se leen las lineas del fichero
 
                                 cout << linea <<endl;
                                 cout<<endl;
@@ -352,13 +365,26 @@ int main()
                                 cout<<endl;
                             }
                         }
-                        lectura.close();
+                        lectura.close(); //cerrar fichero
 
-                        cout<<"INGRESE EL NUMERO DEL ASIENTO QUE DESEA OCUPAR: ";
+                        cout<<"---------------------------------------------------------"<<endl;
+                        cout<<"-------INGRESE EL NUMERO DEL ASIENTO QUE DESEA OCUPAR:---"<<endl;
+                        cout<<"---------ESTE NUMERO NO PUEDE ECCEDER EL LIMITE----------"<<endl;
+                        cout<<"-------------QUE ES DE 15 PERSONAS POR SALA--------------"<<endl;
+                        cout<<"---------------------------------------------------------"<<endl;
+                        cout<<endl;
                         cin>>OpcionAsiento;
                         Cliente1.setAsiento(OpcionAsiento);
                         cout<<endl;
-                        cout<<"********************************************************"<<endl;
+                        cout<<"*********************************************************"<<endl;
+                        cout<<endl;
+
+                        //Se transforma el string a entero para hacer el condicional
+                        if(atoi(Cliente1.getAsiento().c_str())<=0 ||atoi(Cliente1.getAsiento().c_str())>=15){
+                            cout<<"------------INGRESE OTRO ASIENTO POR FAVOR----------------"<<endl;
+                            break;
+                        }
+
                         cout<<endl;
 
                         escritura.open("Sala de Cine 2.txt",ios::out|ios::app); //Se abre el archivo en modo escritura
@@ -369,13 +395,13 @@ int main()
                              consulta>>linea>>linea2>>linea3>>linea4; //Se lee los parametros que estan en el fichero
 
                              while(!consulta.eof()){ //Mientras el archivo no llegue a su fin
-                                 if(linea4==Cliente1.getAsiento()){
+                                 if(linea4==Cliente1.getAsiento()){ //si se encuentra el asiento
                                      cout<<endl;
                                      cout<<"|-------------------------------------------------------|"<<endl;
                                      cout<<"|-----------------Este asiento esta ocupado-------------|"<<endl;
                                      cout<<"|-------------------------------------------------------|"<<endl;
                                      cout<<endl;
-                                     repetido=true;
+                                     repetido=true; //asiento repetido
                                      break;
                                  }
 
@@ -439,8 +465,8 @@ int main()
                     cout<<endl;
 
                     ifstream lectura("Sala de Cine 3.txt"); //Apertura del archivo en modo lectura
-                    if(lectura.is_open()){
-                        while (getline(lectura, linea)){
+                    if(lectura.is_open()){ //Si archivo esta abierto
+                        while (getline(lectura, linea)){//Se leen las lineas del fichero
 
                             cout << linea <<endl;
                             cout<<endl;
@@ -448,13 +474,26 @@ int main()
                             cout<<endl;
                         }
                     }
-                    lectura.close();
+                    lectura.close(); //Se cierra el fichero
 
-                    cout<<"INGRESE EL NUMERO DEL ASIENTO QUE DESEA OCUPAR: ";
+                    cout<<"---------------------------------------------------------"<<endl;
+                    cout<<"-------INGRESE EL NUMERO DEL ASIENTO QUE DESEA OCUPAR:---"<<endl;
+                    cout<<"---------ESTE NUMERO NO PUEDE ECCEDER EL LIMITE----------"<<endl;
+                    cout<<"-------------QUE ES DE 15 PERSONAS POR SALA--------------"<<endl;
+                    cout<<"---------------------------------------------------------"<<endl;
+                    cout<<endl;
                     cin>>OpcionAsiento;
                     Cliente1.setAsiento(OpcionAsiento);
                     cout<<endl;
-                    cout<<"********************************************************"<<endl;
+                    cout<<"*********************************************************"<<endl;
+                    cout<<endl;
+
+                    //Se transforma el string a entero para hacer el condicional
+                    if(atoi(Cliente1.getAsiento().c_str())<=0 ||atoi(Cliente1.getAsiento().c_str())>=15){
+                        cout<<"------------INGRESE OTRO ASIENTO POR FAVOR----------------"<<endl;
+                        break;
+                    }
+
                     cout<<endl;
 
                     escritura.open("Sala de Cine 3.txt",ios::out|ios::app); //Se abre el archivo en modo escritura
@@ -465,17 +504,17 @@ int main()
                          consulta>>linea>>linea2>>linea3>>linea4; //Se lee los parametros que estan en el fichero
 
                          while(!consulta.eof()){ //Mientras el archivo no llegue a su fin
-                             if(linea4==Cliente1.getAsiento()){
+                             if(linea4==Cliente1.getAsiento()){ //Si se encuentra el asiento
                                  cout<<endl;
                                  cout<<"|-------------------------------------------------------|"<<endl;
                                  cout<<"|-----------------Este asiento esta ocupado-------------|"<<endl;
                                  cout<<"|-------------------------------------------------------|"<<endl;
                                  cout<<endl;
-                                 repetido=true;
+                                 repetido=true; //Asiento repetido
                                  break;
                              }
 
-                         consulta>>linea>>linea2>>linea3>>linea4;
+                         consulta>>linea>>linea2>>linea3>>linea4; //lectura
 
                          }
 

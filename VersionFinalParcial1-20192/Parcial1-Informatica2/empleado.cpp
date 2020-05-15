@@ -55,13 +55,14 @@ void Empleado::registrar()
         cout<<"--------------------------------------------------------";
         cout<<endl;
 
-        lectura>>ID;
+        lectura>>ID; //lectura
 
         while(!lectura.eof()){ //mientras no se halla llegado al fin del fichero
             lectura>>Producto>>Cantidad>>CostoProducto>>CostoTotal;
-               if(auxID==ID){
+               if(auxID==ID){ //Si se encuentra ID del producto
                   encontrado=true; //Se encontro el identificador
 
+                    //para que no ponga resultados negativos en la base de datos
                     if(CostoTotal<=0) {
                         cout<<endl;
                         CostoTotal=0; //para que no ponga resultados negativos en la base de datos
@@ -118,7 +119,7 @@ void Empleado::registrar()
                     aux2<<left<<setw(10)<<Producto<<setw(13)<<setprecision(2)<<right<<Cantidad<<endl;
                 }
 
-     lectura>>ID;
+     lectura>>ID; //lectura
 
         }
     }
@@ -129,7 +130,7 @@ void Empleado::registrar()
            cout<<endl;
        }
 
-   if(encontrado==false){
+   if(encontrado==false){ //no se encontro el ID
            cout<<endl;
            cout<<"-No se encontro ningun registro con ese ID-"<<endl;
            cout<<endl;
@@ -140,6 +141,7 @@ void Empleado::registrar()
    aux.close();
    lectura.close();
    aux2.close();
+
    remove("ListaProductos.txt"); //Se borra el fichero
    rename("auxiliar.txt","ListaProductos.txt"); //Se renombran los ficheros
 }//Fin funcion Registrar
@@ -153,22 +155,22 @@ int Empleado::CrearCombos()
    ofstream escritura, escritura2;
    ifstream consulta;
 
-   cout<<"===================PRODUCTOS DISPONIBLES==============="<<endl;
+   cout<<"===================PRODUCTOS DISPONIBLES================"<<endl;
    cout<<endl;
-   cout<<left<<setw(10)<<"PRODUCTO"<<setw(13)<<setprecision(2)<<setw(13)<<right<<"                    CANTIDAD"<<endl;
+   cout<<left<<setw(10)<<"PRODUCTO"<<setw(13)<<setprecision(2)<<setw(13)<<right<<"           CANTIDAD"<<endl;
    cout<<endl;
 
    //Pasamos los datos del fichero a un vector para luego pasarlos a imprimir en pantalla, y as se tenga claridad
    //de los productos disponibles para crear los combos
    ifstream lectura("ListaProductos2.txt"); //Apertura del archivo en modo lectura
-   if(lectura.is_open()){
-       while (getline(lectura, producto)){
-           list.push_back(producto);
+   if(lectura.is_open()){ //si archivo esta abierto
+       while (getline(lectura, producto)){ //se leen las lineas del fichero
+           list.push_back(producto); //Se van agregando los productos en la lista
            cout << producto << endl;
-           list.pop_back();
+           list.pop_back();//Para reducir tamanio de la lista
        }
    }
-   lectura.close();
+   lectura.close(); //se cierra archivo
 
    //Se imprime el vector con los productos disponibles
    for (int i = 0; i < list.size(); i++){
@@ -177,12 +179,12 @@ int Empleado::CrearCombos()
    }
    cout<<endl;
 
-   cout<<"-------------------------------------------------------"<<endl;
+   cout<<"--------------------------------------------------------"<<endl;
 
    cout<<"INGRESE EL ID DEL COMBO QUE DESEA CREAR: "<<endl;
    cin>>IDCombo;
 
-   cout<<"-------------------------------------------------------"<<endl;
+   cout<<"--------------------------------------------------------"<<endl;
    cout<<endl;
 
    consulta.open("Combos.txt",ios::in); //Se abre el fichero en modo lectura
@@ -194,7 +196,7 @@ int Empleado::CrearCombos()
 
        consulta>>Texto>>IDC;
 
-       while(!consulta.eof()){ //mientras no se haya llegado al fin del fichero
+       while(!consulta.eof()){ //mientras no se halla llegado al fin del fichero
 
            if(IDCombo==IDC){
                cout<<"|-------------------------------------------------------|"<<endl;
@@ -203,11 +205,10 @@ int Empleado::CrearCombos()
                cout<<endl;
                return -1;
            }
-           consulta>>Texto;
+           consulta>>Texto; //lectura
        }
    consulta.close(); //cerrar archivo
    }
-
 
    cout<<"INGRESE EL NOMBRE QUE DESEA DARLE AL COMBO "<<endl;
    cin>>NombreCombo;
@@ -226,7 +227,7 @@ int Empleado::CrearCombos()
    escritura2.open("ListaPreciosCombos.txt",ios::out|ios::app);
 
    //En Combos.txt se van ingresando los combos creados y el otro fichero es para guardar el ID del combo con su precio
-   if(escritura.is_open()&& escritura2.is_open()){
+   if(escritura.is_open()&& escritura2.is_open()){ //si los archivos estan abiertos
       escritura<<endl;
       escritura<<"ID: "<<IDCombo<<endl;
       escritura<<"COMBO "<<NombreCombo<<endl;
@@ -234,6 +235,7 @@ int Empleado::CrearCombos()
       escritura<<"-----------------"<<endl;
       escritura<<endl;
 
+      //Se guardan los identificadores de los combos con sus precios en el archivo ListaPreciosCombos.txt
    escritura2<<left<<setw(10)<<IDCombo<<setw(13)<<PrecioCombo;
    }
 
@@ -273,7 +275,7 @@ int Empleado::CrearCombos()
                int Cant_Perros;
                escritura.open("Combos.txt",ios::out|ios::app); //Se abre fichero para ir creando los combos
 
-               if(escritura.is_open()){
+               if(escritura.is_open()){ //si archivo esta abierto
                    cout<<"INGRESE LA CANTIDAD DE PERROS: "<<endl;
                    cin>>Cant_Perros;
 
@@ -291,7 +293,7 @@ int Empleado::CrearCombos()
            {
                int Cant_Hamburguesas;
                escritura.open("Combos.txt",ios::out|ios::app); //Se abre el fichero
-               if(escritura.is_open()){
+               if(escritura.is_open()){//si archivo esta abierto
                    cout<<"INGRESE LA CANTIDAD DE HAMBURGUESAS: "<<endl;
                    cin>>Cant_Hamburguesas;
 
@@ -310,7 +312,7 @@ int Empleado::CrearCombos()
            {
                int Cant_Gaseosas;
                escritura.open("Combos.txt",ios::out|ios::app); //Se abre fichero
-               if(escritura.is_open()){
+               if(escritura.is_open()){//si archivo esta abierto
                    cout<<"INGRESE LA CANTIDAD DE GASEOSAS: "<<endl;
                    cin>>Cant_Gaseosas;
 
@@ -329,7 +331,7 @@ int Empleado::CrearCombos()
            {
                int Cant_PaquetesNachos;
                escritura.open("Combos.txt",ios::out|ios::app); //Se abre el archivo
-               if(escritura.is_open()){
+               if(escritura.is_open()){//si archivo esta abierto
                    cout<<"INGRESE LA CANTIDAD DE PAQUETES DE NACHOS: "<<endl;
                    cin>>Cant_PaquetesNachos;
 
@@ -347,7 +349,7 @@ int Empleado::CrearCombos()
             case 5:
            {
                escritura.open("Combos.txt",ios::out|ios::app); //Se abre fichero
-               if(escritura.is_open()){
+               if(escritura.is_open()){//si archivo esta abierto
                    escritura<<endl;
                    escritura<<"-----------------"<<endl;
                    escritura<<"*"<<endl;
@@ -378,16 +380,16 @@ int Empleado::GenerarReporteVentas()
     int Plata=0, Platatotal=0, Opc=0;
 
     cout<<endl;
-    cout<<left<<setw(10)<<"ID DEL PRODUCTO"<<setw(13)<<setprecision(2)<<right<<"PRECIO"<<endl;
+    cout<<"ID-COMBO    PRECIO"<<endl;
     cout<<endl;
 
     //Se pasan las lineas del archivo a un vector
     lectura.open("ventas.txt"); //Se abre el archivo
-    if(lectura.is_open()){
-            while (getline(lectura, linea)){
-            list.push_back(linea);
+    if(lectura.is_open()){//si archivo esta abierto
+            while (getline(lectura, linea)){ //Se leen las lineas del archivo
+            list.push_back(linea); //Se agregan al vector
             cout << linea << endl;
-            list.pop_back();
+            list.pop_back(); //para reducir tamanio del vector
         }
     }
     lectura.close(); //Se cierra el archivo
@@ -404,41 +406,47 @@ int Empleado::GenerarReporteVentas()
     lectura.open("ventas.txt"); //Se abre el archivo
 
     //Este proceso se hace para sumar las ventas totales del dia
-    if(lectura.is_open()){
-        lectura>>ID>>Plata;
+    if(lectura.is_open()){//si archivo esta abierto
+        lectura>>ID>>Plata; //lectura
         Platatotal=Plata;
         while (getline(lectura, line,'\n')){ //Se leen las lineas del archivo y se va sumando el dinero
           lectura>>ID>>Plata;
           Platatotal+=Plata;
         }
     }
-    lectura.close();
+    lectura.close(); //cerrar archivo
 
     //Se imprime el dinero total vendido
     cout<<endl;
-    cout<<"EL DINERO TOTAL VENDIDO EL DIA DE HOY ES DE "<<Platatotal<<endl;
+    cout<<"EL DINERO TOTAL VENDIDO EL DIA DE HOY ES DE "<<Platatotal<<"$"<<endl;
     cout<<endl;
-    cout<<"-------------------------------------------------------"<<endl;
+    cout<<"--------------------------------------------------------"<<endl;
     cout<<endl;
 
-    cout<<"''''''''''''''''''''''''''''''''''''''''''''"<<endl;
-    cout<<"DESEA ELIMINAR REGISTROS DE LAS VENTAS PARA"<<endl;
-    cout<<"    INICIAR EL REGISTRO DE UN NUEVO DIA    "<<endl;
-    cout<<"'''''''''''''''''''''''''''''''''''''''''''"<<endl;
+    cout<<"--------------------------------------------------------"<<endl;
+    cout<<"------DESEA ELIMINAR REGISTROS DE LAS VENTAS PARA-------"<<endl;
+    cout<<"----------INICIAR EL REGISTRO DE UN NUEVO DIA-----------"<<endl;
+    cout<<"--------------------------------------------------------"<<endl;
     cout<<endl;
     cout<<"SI-------1"<<endl;
     cout<<"NO-------2"<<endl;
     cout<<endl;
     cout<<"INGRESE UNA OPCION: "<<endl;
     cin>>Opc;
+    cout<<endl;
+    cout<<"--------------------------------------------------------"<<endl;
 
     if(Opc==1){
+        //Para eliminar el registro de las ventas
         ofstream aux;
         aux.open("auxi.txt",ios::out);
         aux.close();
 
         remove("ventas.txt");
         rename("auxi.txt","ventas.txt");
+        cout<<endl;
+        cout<<"SE HA ELIMINADO EL REGISTRO DE VENTAS"<<endl;
+        cout<<endl;
         return 0;
     }
 
@@ -453,5 +461,5 @@ int Empleado::salir()
     cout<<"|==================Proceso finalizado===================|"<<endl;
     cout<<"|=======================================================|"<<endl;
     cout<<endl;
-    return -1;
+    return 0;
 }

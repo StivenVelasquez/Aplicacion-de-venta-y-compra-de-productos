@@ -1,8 +1,8 @@
-1         VASOS_PLASTICOS            6      1      6
-2         PAN_PERRO             5      1      5
-3         SALCHICHA             2      1      2
-4         CARNE_HAMB           -1      1     -1
-5         SALSA_ROJA           -3      1     -3
-6         GASEOSA              -2      1     -2
-7         PAN_HAM              -2      1     -2
-8         PAQ_NACHOS           -2      1     -2
+1         VASOS_PLASTICOS           18   4000  72000
+2         PAN_PERRO            14   4000  56000
+3         SALCHICHA            14   4000  56000
+4         CARNE_HAMB           14   4000  56000
+5         SALSA_ROJA            4   1000   4000
+6         GASEOSA              14   4000  56000
+7         PAN_HAM              14   4000  56000
+8         PAQ_NACHOS            4   1000   4000

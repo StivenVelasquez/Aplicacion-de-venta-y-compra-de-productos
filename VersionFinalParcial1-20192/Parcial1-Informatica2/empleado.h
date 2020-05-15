@@ -1,7 +1,6 @@
 #ifndef EMPLEADO_H
 #define EMPLEADO_H
 
-
 #include <iostream>
 #include <conio.h> // getch
 #include <fstream>
@@ -10,11 +9,11 @@
 using namespace std;
 
 class Empleado {
-    private:
+    private: //Atributos
         string nombre;
         string contrasena;
 
-    public:
+    public: //Metodos
         Empleado(); //Constructor;
         void SetNombre( string value );
         void SetContrasena( string value);
