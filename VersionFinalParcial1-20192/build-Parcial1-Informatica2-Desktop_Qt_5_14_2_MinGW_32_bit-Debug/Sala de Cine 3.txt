@@ -1,6 +1,1 @@
-1Carlos    4444               3      1
-s         s                  3      2
-e         e                  3      e
-lucelly   23445              3      3
-NANCY     44444              3      6
-DFF       DDD                3      7
+FRANCISCO 33223              3      1

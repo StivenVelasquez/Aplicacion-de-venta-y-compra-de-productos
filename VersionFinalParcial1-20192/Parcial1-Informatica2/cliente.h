@@ -19,9 +19,9 @@ class Cliente
 
 private: //Atributos
     string NombreCliente, Cedula;
-     string Asiento; //metodos
+     string Asiento;
 
-public:
+public://metodos
     Cliente();//Constructor
     void setNombreCliente(string value);
     void setcedula(string value);

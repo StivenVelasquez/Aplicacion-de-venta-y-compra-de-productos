@@ -167,7 +167,7 @@ int Empleado::CrearCombos()
        while (getline(lectura, producto)){ //se leen las lineas del fichero
            list.push_back(producto); //Se van agregando los productos en la lista
            cout << producto << endl;
-           list.pop_back();//Para reducir tamanio de la lista
+           list.pop_back();//Para reducir tamanio del vector
        }
    }
    lectura.close(); //se cierra archivo
@@ -236,7 +236,7 @@ int Empleado::CrearCombos()
       escritura<<endl;
 
       //Se guardan los identificadores de los combos con sus precios en el archivo ListaPreciosCombos.txt
-   escritura2<<left<<setw(10)<<IDCombo<<setw(13)<<PrecioCombo;
+   escritura2<<left<<setw(10)<<IDCombo<<setw(13)<<PrecioCombo<<endl;
    }
 
    //Se cierra los ficheros
@@ -408,10 +408,10 @@ int Empleado::GenerarReporteVentas()
     //Este proceso se hace para sumar las ventas totales del dia
     if(lectura.is_open()){//si archivo esta abierto
         lectura>>ID>>Plata; //lectura
-        Platatotal=Plata;
+
         while (getline(lectura, line,'\n')){ //Se leen las lineas del archivo y se va sumando el dinero
-          lectura>>ID>>Plata;
-          Platatotal+=Plata;
+           Platatotal+=Plata;
+           lectura>>ID>>Plata;
         }
     }
     lectura.close(); //cerrar archivo

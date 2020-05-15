@@ -97,9 +97,10 @@ int Cliente::ComprarCombo()
             listaC.pop_front(); //Elimina el primer elemento para reducir tamanio de la lista
           }
 
+
             cout<<"|.......................................................|"<<endl;
             cout<<"|1. Realizar la compra..................................|"<<endl;
-            cout<<"|3. Volver al menu de compra de combos..................|"<<endl;
+            cout<<"|2. Volver al menu de compra de combos..................|"<<endl;
             cout<<"|.......................................................|"<<endl;
             cout<<"|....................QUE DESEA HACER?...................|"<<endl;
             cout<<"|.......................................................|"<<endl;
@@ -418,7 +419,7 @@ int Cliente::ComprarCombo()
                       }
                   }
                  leer.close(); //Se cierra el fichero
-                 escritura.close();
+                escritura.close();
                  }
                 break;
 

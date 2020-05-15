@@ -222,6 +222,7 @@ Makefile: ../Parcial1-Informatica2/Parcial1-Informatica2.pro ../../Instalacion-q
 		../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/features/qt_config.prf \
 		../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/win32-g++/qmake.conf \
 		../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/features/exclusive_builds.prf \
 		../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/features/toolchain.prf \
 		../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/features/default_pre.prf \
@@ -240,7 +241,6 @@ Makefile: ../Parcial1-Informatica2/Parcial1-Informatica2.pro ../../Instalacion-q
 		../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/features/yacc.prf \
 		../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/features/lex.prf \
 		../Parcial1-Informatica2/Parcial1-Informatica2.pro \
-		.qmake.stash \
 		../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/features/build_pass.prf
 	$(QMAKE) -o Makefile ..\Parcial1-Informatica2\Parcial1-Informatica2.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 ../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/features/spec_pre.prf:
@@ -395,6 +395,7 @@ Makefile: ../Parcial1-Informatica2/Parcial1-Informatica2.pro ../../Instalacion-q
 ../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/features/qt_config.prf:
 ../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/win32-g++/qmake.conf:
 ../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/features/exclusive_builds.prf:
 ../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/features/toolchain.prf:
 ../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/features/default_pre.prf:
@@ -413,7 +414,6 @@ Makefile: ../Parcial1-Informatica2/Parcial1-Informatica2.pro ../../Instalacion-q
 ../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/features/yacc.prf:
 ../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/features/lex.prf:
 ../Parcial1-Informatica2/Parcial1-Informatica2.pro:
-.qmake.stash:
 ../../Instalacion-qt/5.14.2/mingw73_32/mkspecs/features/build_pass.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\Parcial1-Informatica2\Parcial1-Informatica2.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"

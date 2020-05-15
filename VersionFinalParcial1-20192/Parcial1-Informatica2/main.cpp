@@ -259,7 +259,7 @@ int main()
                         cout<<"---------------------------------------------------------"<<endl;
                         cout<<"-------INGRESE EL NUMERO DEL ASIENTO QUE DESEA OCUPAR:---"<<endl;
                         cout<<"---------ESTE NUMERO NO PUEDE ECCEDER EL LIMITE----------"<<endl;
-                        cout<<"-------------QUE ES DE 15 PERSONAS POR SALA--------------"<<endl;
+                        cout<<"-------------QUE ES DE 14 PERSONAS POR SALA--------------"<<endl;
                         cout<<"---------------------------------------------------------"<<endl;
                         cout<<endl;
                         cin>>OpcionAsiento;
@@ -370,7 +370,7 @@ int main()
                         cout<<"---------------------------------------------------------"<<endl;
                         cout<<"-------INGRESE EL NUMERO DEL ASIENTO QUE DESEA OCUPAR:---"<<endl;
                         cout<<"---------ESTE NUMERO NO PUEDE ECCEDER EL LIMITE----------"<<endl;
-                        cout<<"-------------QUE ES DE 15 PERSONAS POR SALA--------------"<<endl;
+                        cout<<"-------------QUE ES DE 14 PERSONAS POR SALA--------------"<<endl;
                         cout<<"---------------------------------------------------------"<<endl;
                         cout<<endl;
                         cin>>OpcionAsiento;
@@ -479,7 +479,7 @@ int main()
                     cout<<"---------------------------------------------------------"<<endl;
                     cout<<"-------INGRESE EL NUMERO DEL ASIENTO QUE DESEA OCUPAR:---"<<endl;
                     cout<<"---------ESTE NUMERO NO PUEDE ECCEDER EL LIMITE----------"<<endl;
-                    cout<<"-------------QUE ES DE 15 PERSONAS POR SALA--------------"<<endl;
+                    cout<<"-------------QUE ES DE 14 PERSONAS POR SALA--------------"<<endl;
                     cout<<"---------------------------------------------------------"<<endl;
                     cout<<endl;
                     cin>>OpcionAsiento;
